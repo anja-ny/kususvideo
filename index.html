@@ -1,53 +1,369 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Video</title>
+    <title>Video Autoplay untuk Blogger</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            background: #111;
-            color: #fff;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
             padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
+        
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
         h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
             text-align: center;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 15px;
         }
-        .list {
-            max-width: 600px;
-            margin: auto;
+        
+        h2 {
+            color: #3498db;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #eaeaea;
         }
-        a {
+        
+        h3 {
+            color: #2c3e50;
+            margin: 20px 0 10px 0;
+        }
+        
+        .instructions {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .instructions ol {
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+        }
+        
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        video {
+            width: 100%;
+            height: auto;
             display: block;
-            background: #222;
-            padding: 12px;
-            margin: 6px 0;
-            color: #00eaff;
-            text-decoration: none;
-            border-radius: 6px;
-            border: 1px solid #00eaff;
-            transition: 0.2s;
+            background-color: #000;
         }
-        a:hover {
-            background: #00eaff;
-            color: #000;
+        
+        .video-info {
+            background-color: #f1f8ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .code-container {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .code-container code {
+            display: block;
+            white-space: pre;
+        }
+        
+        .note {
+            background-color: #fffde7;
+            border: 1px solid #ffeb3b;
+            padding: 12px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-size: 0.9rem;
+        }
+        
+        .note strong {
+            color: #f39c12;
+        }
+        
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .copy-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: center;
+            display: none;
+        }
+        
+        .video-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .video-option {
+            background-color: #ecf0f1;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .video-option:hover {
+            background-color: #d5dbdb;
+        }
+        
+        .video-option.active {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .video-container {
+                margin: 15px auto;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Kode Video Autoplay untuk Blogger</h1>
+        
+        <div class="instructions">
+            <h3>Instruksi Penggunaan:</h3>
+            <ol>
+                <li>Pilih salah satu video dari daftar di bawah (atau gunakan contoh video)</li>
+                <li>Salin kode HTML yang sesuai</li>
+                <li>Di dashboard Blogger, buat postingan baru atau edit yang sudah ada</li>
+                <li>Ubah mode editor dari "Compose" ke "HTML"</li>
+                <li>Tempel kode di tempat yang Anda inginkan</li>
+                <li>Simpan dan lihat hasilnya</li>
+            </ol>
+        </div>
+        
+        <h2>Pilih Video</h2>
+        <div class="video-selector">
+            <div class="video-option active" data-video="example">Video Contoh (AutoPlay)</div>
+            <div class="video-option" data-video="video1">Video 1 (dari GitHub)</div>
+            <div class="video-option" data-video="video2">Video 2 (dari GitHub)</div>
+            <div class="video-option" data-video="video3">Video 3 (dari GitHub)</div>
+        </div>
+        
+        <h2>Pratinjau Video</h2>
+        <div class="video-container">
+            <video id="previewVideo" controls autoplay muted playsinline>
+                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                Browser Anda tidak mendukung elemen video.
+            </video>
+        </div>
+        
+        <div class="video-info">
+            <strong>Catatan:</strong> Video di atas akan diputar otomatis (autoplay) dengan suara dimatikan (muted). Untuk mendengarkan suaranya, klik tombol unmute pada kontrol video.
+        </div>
+        
+        <h2>Kode HTML untuk Blogger</h2>
+        
+        <div class="note">
+            <strong>Penting:</strong> Kode di bawah ini sudah dioptimalkan untuk Blogger. Untuk video autoplay, browser memerlukan atribut <strong>muted</strong> dan <strong>playsinline</strong>. Jika ingin video diputar dengan suara, pengguna harus mengaktifkannya secara manual.
+        </div>
+        
+        <div class="code-container">
+            <code id="htmlCode">&lt;!-- Video Autoplay untuk Blogger --&gt;
+&lt;div style="width:100%; max-width:800px; margin:20px auto; border-radius:8px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.15);"&gt;
+  &lt;video width="100%" height="auto" controls autoplay muted playsinline&gt;
+    &lt;source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4"&gt;
+    Browser Anda tidak mendukung elemen video.
+  &lt;/video&gt;
+&lt;/div&gt;
+&lt;!-- Akhir Kode Video --&gt;</code>
+        </div>
+        
+        <div class="btn-container">
+            <button class="copy-btn" id="copyBtn">Salin Kode HTML</button>
+        </div>
+        
+        <div class="success-message" id="successMessage">
+            Kode berhasil disalin! Sekarang tempel di editor HTML Blogger.
+        </div>
+        
+        <h2>Kode HTML Alternatif (Tanpa Kontrol)</h2>
+        
+        <div class="note">
+            <strong>Alternatif:</strong> Kode ini akan memutar video secara otomatis tanpa kontrol pemutaran. Cocok untuk video background atau loop.
+        </div>
+        
+        <div class="code-container">
+            <code id="htmlCodeAlt">&lt;!-- Video Autoplay Tanpa Kontrol --&gt;
+&lt;div style="width:100%; max-width:800px; margin:20px auto; border-radius:8px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.15);"&gt;
+  &lt;video width="100%" height="auto" autoplay muted playsinline loop&gt;
+    &lt;source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4"&gt;
+    Browser Anda tidak mendukung elemen video.
+  &lt;/video&gt;
+&lt;/div&gt;
+&lt;!-- Akhir Kode Video --&gt;</code>
+        </div>
+        
+        <div class="btn-container">
+            <button class="copy-btn" id="copyBtnAlt">Salin Kode Alternatif</button>
+        </div>
+        
+        <div class="success-message" id="successMessageAlt">
+            Kode alternatif berhasil disalin!
+        </div>
+    </div>
 
-<h1>Daftar Video (1–50)</h1>
-
-<div class="list">
-<script>
-for (let i = 1; i <= 50; i++) {
-    document.write(
-        `<a href="player.html?v=bay${i}.mp4">▶ Video ${i}</a>`
-    );
-}
-</script>
-</div>
-
+    <script>
+        // Data video dari GitHub Anda
+        const videoSources = {
+            example: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+            video1: "https://anja-ny.github.io/kususvideo/video1.mp4",
+            video2: "https://anja-ny.github.io/kususvideo/video2.mp4",
+            video3: "https://anja-ny.github.io/kususvideo/video3.mp4"
+        };
+        
+        // Update kode HTML berdasarkan video yang dipilih
+        const videoOptions = document.querySelectorAll('.video-option');
+        const previewVideo = document.getElementById('previewVideo');
+        const htmlCodeElement = document.getElementById('htmlCode');
+        const htmlCodeAltElement = document.getElementById('htmlCodeAlt');
+        
+        videoOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Update tampilan aktif
+                videoOptions.forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                
+                const videoKey = this.getAttribute('data-video');
+                const videoSrc = videoSources[videoKey];
+                
+                // Update video preview
+                previewVideo.src = videoSrc;
+                
+                // Update kode HTML
+                const htmlCode = `&lt;!-- Video Autoplay untuk Blogger --&gt;
+&lt;div style="width:100%; max-width:800px; margin:20px auto; border-radius:8px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.15);"&gt;
+  &lt;video width="100%" height="auto" controls autoplay muted playsinline&gt;
+    &lt;source src="${videoSrc}" type="video/mp4"&gt;
+    Browser Anda tidak mendukung elemen video.
+  &lt;/video&gt;
+&lt;/div&gt;
+&lt;!-- Akhir Kode Video --&gt;`;
+                
+                const htmlCodeAlt = `&lt;!-- Video Autoplay Tanpa Kontrol --&gt;
+&lt;div style="width:100%; max-width:800px; margin:20px auto; border-radius:8px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.15);"&gt;
+  &lt;video width="100%" height="auto" autoplay muted playsinline loop&gt;
+    &lt;source src="${videoSrc}" type="video/mp4"&gt;
+    Browser Anda tidak mendukung elemen video.
+  &lt;/video&gt;
+&lt;/div&gt;
+&lt;!-- Akhir Kode Video --&gt;`;
+                
+                htmlCodeElement.textContent = htmlCode;
+                htmlCodeAltElement.textContent = htmlCodeAlt;
+            });
+        });
+        
+        // Fungsi untuk menyalin kode
+        document.getElementById('copyBtn').addEventListener('click', function() {
+            const codeToCopy = htmlCodeElement.textContent;
+            copyToClipboard(codeToCopy);
+            
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        });
+        
+        document.getElementById('copyBtnAlt').addEventListener('click', function() {
+            const codeToCopy = htmlCodeAltElement.textContent;
+            copyToClipboard(codeToCopy);
+            
+            const successMessage = document.getElementById('successMessageAlt');
+            successMessage.style.display = 'block';
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        });
+        
+        function copyToClipboard(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+        }
+        
+        // Catatan untuk video dari GitHub
+        console.log("Catatan: Untuk menggunakan video dari GitHub Anda, pastikan:");
+        console.log("1. Video sudah diupload ke repositori https://anja-ny.github.io/kususvideo/");
+        console.log("2. Format URL video: https://anja-ny.github.io/kususvideo/[nama-file].mp4");
+        console.log("3. Ganti [nama-file].mp4 dengan nama file video yang Anda miliki");
+    </script>
 </body>
 </html>
