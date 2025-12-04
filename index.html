@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #fff;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .list {
+            max-width: 600px;
+            margin: auto;
+        }
+        a {
+            display: block;
+            background: #222;
+            padding: 12px;
+            margin: 6px 0;
+            color: #00eaff;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid #00eaff;
+            transition: 0.2s;
+        }
+        a:hover {
+            background: #00eaff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Daftar Video (1–50)</h1>
+
+<div class="list">
+<script>
+for (let i = 1; i <= 50; i++) {
+    document.write(
+        `<a href="player.html?v=bay${i}.mp4">▶ Video ${i}</a>`
+    );
+}
+</script>
+</div>
+
+</body>
+</html>
